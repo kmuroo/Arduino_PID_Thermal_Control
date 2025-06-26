@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{322BECED-9F9F-45DD-817D-588E2F3C1871}|Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control.csproj|c:\\users\\muroo\\onedrive - tokyo university of agriculture and technology\\programs\\visual studio c#\\arduino_pid_thermal_control\\arduino_pid_thermal_control\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{322BECED-9F9F-45DD-817D-588E2F3C1871}|Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control.csproj|solutionrelative:arduino_pid_thermal_control\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{322BECED-9F9F-45DD-817D-588E2F3C1871}|Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control.csproj|C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\arduino_pid_thermal_control\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{322BECED-9F9F-45DD-817D-588E2F3C1871}|Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control.csproj|solutionrelative:arduino_pid_thermal_control\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\muroo\\AppData\\Local\\Temp\\.vsdbgsrc\\6cce11658a3ddb41e717674d2181e99ea96a76102f3e836a813629f4c051111f\\SerialPort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control\\Form1.cs",
+              "RelativeDocumentMoniker": "Arduino_PID_Thermal_Control\\Form1.cs",
+              "ToolTip": "C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control\\Form1.cs*",
+              "RelativeToolTip": "Arduino_PID_Thermal_Control\\Form1.cs*",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAWwOwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T09:36:57.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SerialPort.cs",
+              "DocumentMoniker": "C:\\Users\\muroo\\AppData\\Local\\Temp\\.vsdbgsrc\\6cce11658a3ddb41e717674d2181e99ea96a76102f3e836a813629f4c051111f\\SerialPort.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6cce11658a3ddb41e717674d2181e99ea96a76102f3e836a813629f4c051111f\\SerialPort.cs",
+              "ToolTip": "C:\\Users\\muroo\\AppData\\Local\\Temp\\.vsdbgsrc\\6cce11658a3ddb41e717674d2181e99ea96a76102f3e836a813629f4c051111f\\SerialPort.cs [\u8AAD\u307F\u53D6\u308A\u5C02\u7528]",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6cce11658a3ddb41e717674d2181e99ea96a76102f3e836a813629f4c051111f\\SerialPort.cs [\u8AAD\u307F\u53D6\u308A\u5C02\u7528]",
+              "ViewState": "AgIAAO8EAAAAAAAAAAAEwAEFAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:28:21.279Z",
+              "EditorCaption": " [\u8AAD\u307F\u53D6\u308A\u5C02\u7528]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control\\Form1.cs",
+              "RelativeDocumentMoniker": "Arduino_PID_Thermal_Control\\Form1.cs",
+              "ToolTip": "C:\\Users\\muroo\\OneDrive - Tokyo University of Agriculture and Technology\\programs\\Visual Studio C#\\Arduino_PID_Thermal_Control\\Arduino_PID_Thermal_Control\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]*",
+              "RelativeToolTip": "Arduino_PID_Thermal_Control\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T08:58:55.479Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
