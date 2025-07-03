@@ -22,6 +22,7 @@ namespace Arduino_PID_Thermal_Control
         string default_portname = "COM7"; // デフォルトCOMポート
         string[] ports;
         bool monitor_enable = false;
+        string[] current_parameters;
 
         public Form1()
         {
@@ -84,6 +85,15 @@ namespace Arduino_PID_Thermal_Control
                     if (devicecheck() == 0) //PID thermal controllerかどうかのチェック
                     {
                         textBox1.AppendText("PID thermal controller を接続しました (" + serialPort1.PortName + ")\n\r\n\r");
+                        current_parameters = get_current_parameters();
+                        label9.Text = current_parameters[0];
+                        label10.Text = current_parameters[1];
+                        label11.Text = current_parameters[2];
+                        label12.Text = current_parameters[3];
+                        label13.Text = current_parameters[4];
+                        label14.Text = current_parameters[5];
+                        label15.Text = current_parameters[6];
+                        label16.Text = current_parameters[7];
                         return true;
                     }
                     else {
@@ -150,16 +160,23 @@ namespace Arduino_PID_Thermal_Control
             }
         }
 
+        private string[] get_current_parameters() //現在のパラメーター収得
+        {
+            string[] current_parameters;
+            string parameters;
+            serialPort1.ReadExisting(); //バッファを空に
+            parameters = arduino_send_recv("l");
+            current_parameters = parameters.Split(','); //カンマ区切りで分割
+            return current_parameters;
+        }
+
         private string arduino_send_recv(string send_message)//Arduinoにメッセージ送信、コールバックあり
         {
             string recv_message;
-
             serialPort1.ReadExisting(); //バッファを空に
             serialPort1.Write(send_message); //メッセージ送信
-
-            serialPort1.ReadTimeout = 5000;
+            serialPort1.ReadTimeout = 5000; //タイムアウトを5秒に設定
             recv_message = serialPort1.ReadLine();//メッセージ受信
-
             return recv_message;
         }
 
@@ -265,7 +282,7 @@ namespace Arduino_PID_Thermal_Control
             else
             {
                 //COMポートを閉じて終了
-
+                arduino_send("r");
                 if (serialPort1.IsOpen)
                 {
                     serialPort1.Close();
@@ -292,6 +309,77 @@ namespace Arduino_PID_Thermal_Control
             {
                 textBox1.AppendText("ポートは開かれていません\n\r\n\r");
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (monitor_enable == true)
+            {
+                MessageBox.Show("Monitor中です。Monitorを中止してください\n\r\n\r");
+                return;
+            }
+            if (serialPort1.IsOpen == false)
+            {
+                textBox1.AppendText("COMポートが開かれていません\n\r\n\r");
+                return;
+            }
+            Form2.Instance.Form2_Text1 = label9.Text;
+            Form2.Instance.Form2_Text2 = label10.Text;
+            Form2.Instance.Form2_Text3 = label11.Text;
+            Form2.Instance.Form2_Text4 = label12.Text;
+            Form2.Instance.Form2_Text5 = label13.Text;
+            Form2.Instance.Form2_Text6 = label14.Text;
+            Form2.Instance.Form2_Text7 = label15.Text;
+            Form2.Instance.Form2_Text8 = label16.Text;
+            Form2.Instance.ShowDialog();
+            if (Form2.Instance.DialogResult == DialogResult.OK)
+            {
+                // OKボタンがクリックされた場合、パラメータを更新
+                label9.Text = Form2.Instance.Form2_Text1;
+                label10.Text = Form2.Instance.Form2_Text2;
+                label11.Text = Form2.Instance.Form2_Text3;
+                label12.Text = Form2.Instance.Form2_Text4;
+                label13.Text = Form2.Instance.Form2_Text5;
+                label14.Text = Form2.Instance.Form2_Text6;
+                label15.Text = Form2.Instance.Form2_Text7;
+                label16.Text = Form2.Instance.Form2_Text8;
+                serialPort1.ReadExisting();
+
+                string response = arduino_send_recv("p" + label9.Text + "," + label10.Text + "," + label11.Text
+                    + "," + label12.Text + "," + label13.Text + "," + label14.Text + ","
+                    + label15.Text + "," + label16.Text);
+                response = response.TrimEnd('\r', '\n');
+
+                if ( response == "P")
+                {
+                    textBox1.AppendText("Update parameters.\n\r\n\r");
+                }
+                else
+                {
+                    textBox1.AppendText("Failed to update parameters.\n\r\n\r");
+                }
+
+                serialPort1.ReadExisting();
+                current_parameters = get_current_parameters();
+                textBox1.AppendText("New parameters are\n\r\n\r");
+                textBox1.AppendText(current_parameters[0] + "\t" + current_parameters[1] + "\t"
+                    + current_parameters[2] + "\t" +current_parameters[3] + "\n\r\n\r" + current_parameters[4] + "\t"
+                    + current_parameters[5] + "\t" + current_parameters[6] + "\t" + current_parameters[7] + "\t" + "\n\r\n\r");
+            }
+            else if (Form2.Instance.DialogResult == DialogResult.Cancel)
+            {
+                // Cancelボタンがクリックされた場合、何もしない
+            }
+            else
+            {
+                MessageBox.Show("パラメータの更新に失敗しました。");
+
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

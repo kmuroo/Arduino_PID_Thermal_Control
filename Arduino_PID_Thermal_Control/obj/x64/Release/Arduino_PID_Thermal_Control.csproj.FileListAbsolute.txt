@@ -20,3 +20,39 @@ C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\
 C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\Visual Studio C#\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.CoreCompileInputs.cache
 C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\Visual Studio C#\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe
 C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\Visual Studio C#\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.AssemblyReference.cache
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form1.resources
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form2.resources
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Properties.Resources.resources
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.GenerateResource.cache
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.CoreCompileInputs.cache
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\muroo\Desktop\program (git)\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.AssemblyReference.cache
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form1.resources
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form2.resources
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Properties.Resources.resources
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.GenerateResource.cache
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.CoreCompileInputs.cache
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\kaz\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\bin\x64\Release\Arduino_PID_Thermal_Control.pdb
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.AssemblyReference.cache
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe.config
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form1.resources
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Form2.resources
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.Properties.Resources.resources
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.GenerateResource.cache
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.csproj.CoreCompileInputs.cache
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.exe
+C:\Users\muroo\OneDrive - Tokyo University of Agriculture and Technology\programs\git\Arduino_PID_Thermal_Control\Arduino_PID_Thermal_Control\obj\x64\Release\Arduino_PID_Thermal_Control.pdb
