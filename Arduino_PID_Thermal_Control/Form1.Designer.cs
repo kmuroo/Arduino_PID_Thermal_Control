@@ -55,6 +55,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -75,7 +77,7 @@
             this.textBox1.Location = new System.Drawing.Point(238, 36);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(414, 322);
+            this.textBox1.Size = new System.Drawing.Size(372, 302);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -123,7 +125,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(121, 322);
+            this.button5.Location = new System.Drawing.Point(131, 302);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(101, 36);
             this.button5.TabIndex = 6;
@@ -133,7 +135,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(14, 322);
+            this.button6.Location = new System.Drawing.Point(131, 249);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(101, 36);
             this.button6.TabIndex = 7;
@@ -144,11 +146,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(488, 21);
+            this.label1.Location = new System.Drawing.Point(446, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 12);
             this.label1.TabIndex = 8;
-            this.label1.Text = "PID Thermal Controller Ver. 2.0";
+            this.label1.Text = "PID Thermal Controller Ver. 2.1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -218,72 +221,64 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(54, 199);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 12);
+            this.label9.Size = new System.Drawing.Size(0, 12);
             this.label9.TabIndex = 16;
-            this.label9.Text = "label9";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(96, 199);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.Size = new System.Drawing.Size(0, 12);
             this.label10.TabIndex = 17;
-            this.label10.Text = "label10";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(142, 199);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.Size = new System.Drawing.Size(0, 12);
             this.label11.TabIndex = 18;
-            this.label11.Text = "label11";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(189, 199);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.Size = new System.Drawing.Size(0, 12);
             this.label12.TabIndex = 19;
-            this.label12.Text = "label12";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(54, 225);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 12);
+            this.label13.Size = new System.Drawing.Size(0, 12);
             this.label13.TabIndex = 20;
-            this.label13.Text = "label13";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(96, 225);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 12);
+            this.label14.Size = new System.Drawing.Size(0, 12);
             this.label14.TabIndex = 21;
-            this.label14.Text = "label14";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(140, 224);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 12);
+            this.label15.Size = new System.Drawing.Size(0, 12);
             this.label15.TabIndex = 22;
-            this.label15.Text = "label15";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(189, 224);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 12);
+            this.label16.Size = new System.Drawing.Size(0, 12);
             this.label16.TabIndex = 23;
-            this.label16.Text = "label16";
             // 
             // button7
             // 
@@ -295,11 +290,22 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(16, 302);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(99, 36);
+            this.button8.TabIndex = 25;
+            this.button8.Text = "Save FILE";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 376);
+            this.ClientSize = new System.Drawing.Size(639, 356);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -325,8 +331,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
-            this.MaximumSize = new System.Drawing.Size(680, 415);
-            this.MinimumSize = new System.Drawing.Size(680, 415);
+            this.MaximumSize = new System.Drawing.Size(655, 395);
+            this.MinimumSize = new System.Drawing.Size(655, 395);
             this.Name = "Form1";
             this.Text = "Arduino PID Thermal Control";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -363,6 +369,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

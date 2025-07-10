@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection.Emit;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Application = System.Windows.Forms.Application;
@@ -23,6 +25,10 @@ namespace Arduino_PID_Thermal_Control
         string[] ports;
         bool monitor_enable = false;
         string[] current_parameters;
+        string temp_file_name;
+        StreamWriter temp_file;
+        int job = 0;
+
 
         public Form1()
         {
@@ -42,6 +48,9 @@ namespace Arduino_PID_Thermal_Control
                 button4.BackColor = Color.LightGray;
                 button1.BackColor = SystemColors.Control;
             }
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
         }
 
         private void add_serial_portname()
@@ -195,6 +204,9 @@ namespace Arduino_PID_Thermal_Control
                 {
                     button1.BackColor = Color.LightGray;
                     button4.BackColor = SystemColors.Control;
+                    button6.Enabled = true;
+                    button7.Enabled = true;
+                    //button8.Enabled = true;
                 }
             }
         }
@@ -205,11 +217,27 @@ namespace Arduino_PID_Thermal_Control
                 monitor_enable = true;
                 if (serialPort1.IsOpen)
                 {
+                    job++;
                     serialPort1.ReadExisting(); //バッファを空に
                     arduino_send("e");
-                    textBox1.AppendText("Monitor start\n\r\n\r");
+                    textBox1.AppendText("Monitor start  Job. " + job + "\n\r\n\r");
                     button2.BackColor = Color.LightGray;
                     button3.BackColor = SystemColors.Control;
+                    button7.Enabled = false;
+                    button8.Enabled = false;
+                   
+                    if(File.Exists(temp_file_name))
+                    {
+                        temp_file.Close();
+                        File.Delete(temp_file_name);
+                    }
+                    temp_file_name = Path.GetTempFileName();
+                    Encoding enc = Encoding.GetEncoding("Shift_JIS");
+                    temp_file = new StreamWriter(temp_file_name);
+                    DateTime dateTime = DateTime.Now;
+                    //temp_file.WriteLine("test");
+                    
+                    temp_file.WriteLine("#" + dateTime.ToString("yyyy/MM/dd  HH:mm:ss") + "  Job. " + job.ToString());
                 }
                 else
                 {
@@ -227,7 +255,9 @@ namespace Arduino_PID_Thermal_Control
         {
             while (monitor_enable)
             {
-                textBox1.AppendText(serialPort1.ReadLine() + "\n\r");
+                string report = serialPort1.ReadLine(); //Arduinoからのデータを読み込む
+                textBox1.AppendText(report + "\n\r");
+                temp_file.Write(report.Replace("\t", ","));
             }
             arduino_send("s");
             monitor_enable = false;
@@ -240,6 +270,8 @@ namespace Arduino_PID_Thermal_Control
             if (monitor_enable == true)
             {
                 monitor_enable = false;
+                button8.Enabled = true;
+                button7.Enabled = true;
                 if (serialPort1.IsOpen)
                 {
                     button3.BackColor = Color.LightGray;
@@ -260,6 +292,8 @@ namespace Arduino_PID_Thermal_Control
                 if (monitor_enable == false)
                 {
                     comclose();
+                    button7.Enabled = false;
+                    //button8.Enabled = false;
                 }
                 else
                 {
@@ -282,12 +316,20 @@ namespace Arduino_PID_Thermal_Control
             else
             {
                 //COMポートを閉じて終了
-                arduino_send("r");
+                
                 if (serialPort1.IsOpen)
                 {
+                    arduino_send("r");
                     serialPort1.Close();
                 }
 
+                if (temp_file != null)
+                {
+                    temp_file.Close();
+                    File.Delete(temp_file_name);
+                }
+                
+                
             }
         }
 
@@ -378,6 +420,40 @@ namespace Arduino_PID_Thermal_Control
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = "data" + job.ToString() + ".csv";
+            saveFileDialog1.Filter = "csv型式ファイル(*.csv)|*.csv";
+            saveFileDialog1.Title = "Save an DATA File";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                try
+                {
+                    // 一次ファイルをsaveFileDialog1.FileNameにコピー
+
+                    if (temp_file != null)
+                    {
+                        temp_file.Close();
+                        File.Copy(@temp_file_name, @saveFileDialog1.FileName,true);
+                        MessageBox.Show("データを保存しました: " + saveFileDialog1.FileName);
+                    // 一時ファイルを削除
+                        File.Delete(temp_file_name);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("データの保存に失敗しました: " + ex.Message);
+                }
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
