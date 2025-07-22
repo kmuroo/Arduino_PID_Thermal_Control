@@ -28,7 +28,7 @@ namespace Arduino_PID_Thermal_Control
         string temp_file_name;
         StreamWriter temp_file;
         int job = 0;
-
+        int iteration_number = 0;
 
         public Form1()
         {
@@ -87,13 +87,13 @@ namespace Arduino_PID_Thermal_Control
                     {
                         // ポートがオープンするまで待つ
                     }
-                    textBox1.AppendText("PID thermal controllerをオープンしています\n\r\n\r");
+                    textBox1.AppendText("PID thermal controllerをオープンしています\r\n\r\n");
                                        
                     serialPort1.ReadExisting(); //バッファを空に
 
                     if (devicecheck() == 0) //PID thermal controllerかどうかのチェック
                     {
-                        textBox1.AppendText("PID thermal controller を接続しました (" + serialPort1.PortName + ")\n\r\n\r");
+                        textBox1.AppendText("PID thermal controller を接続しました (" + serialPort1.PortName + ")\r\n\r\n");
                         current_parameters = get_current_parameters();
                         label9.Text = current_parameters[0];
                         label10.Text = current_parameters[1];
@@ -133,7 +133,7 @@ namespace Arduino_PID_Thermal_Control
                 string a = "PID_Controller";
                 string c = arduino_send_recv("c");
                 c = c.TrimEnd('\r', '\n'); //改行コード削除
-                textBox1.AppendText("device チェック終了\n\r\n\r");
+                textBox1.AppendText("device チェック終了\r\n\r\n");
                 if (a == c) //接続成功すれば "PID_Controller" がArduinoから返ってくる
                 {
                     return 0; //正しければ0を返す
@@ -146,7 +146,7 @@ namespace Arduino_PID_Thermal_Control
             catch (Exception ex)
             {
                 textBox1.AppendText(ex.Message);
-                textBox1.AppendText("COMポートからが反応がありません\n\r\n\r");
+                textBox1.AppendText("COMポートからが反応がありません\r\n\r\n");
                 comclose();
                 return -1;
             }
@@ -161,7 +161,7 @@ namespace Arduino_PID_Thermal_Control
             {
                 arduino_send("r");
                 serialPort1.Close();
-                textBox1.AppendText("PID thermal controller を切断しました (" + serialPort1.PortName + ")\n\r\n\r");
+                textBox1.AppendText("PID thermal controller を切断しました (" + serialPort1.PortName + ")\r\n\r\n");
                 button4.BackColor = Color.LightGray;
                 button1.BackColor = SystemColors.Control;
                 button3.BackColor = Color.LightGray;
@@ -220,11 +220,12 @@ namespace Arduino_PID_Thermal_Control
                     job++;
                     serialPort1.ReadExisting(); //バッファを空に
                     arduino_send("e");
-                    textBox1.AppendText("Monitor start  Job. " + job + "\n\r\n\r");
+                    textBox1.AppendText("Monitor start  Job. " + job + "\r\n");
                     button2.BackColor = Color.LightGray;
                     button3.BackColor = SystemColors.Control;
                     button7.Enabled = false;
                     button8.Enabled = false;
+                    iteration_number = 0;
                    
                     if(File.Exists(temp_file_name))
                     {
@@ -235,13 +236,11 @@ namespace Arduino_PID_Thermal_Control
                     Encoding enc = Encoding.GetEncoding("Shift_JIS");
                     temp_file = new StreamWriter(temp_file_name);
                     DateTime dateTime = DateTime.Now;
-                    //temp_file.WriteLine("test");
-                    
                     temp_file.WriteLine("#" + dateTime.ToString("yyyy/MM/dd  HH:mm:ss") + "  Job. " + job.ToString());
                 }
                 else
                 {
-                    textBox1.AppendText("COMポ－トが開かれていません\n\r\n\r");
+                    textBox1.AppendText("COMポ－トが開かれていません\r\n\r\n");
                 }
                 
                 Task<int> task = Task.Run(() => {
@@ -255,13 +254,16 @@ namespace Arduino_PID_Thermal_Control
         {
             while (monitor_enable)
             {
+                iteration_number++;
                 string report = serialPort1.ReadLine(); //Arduinoからのデータを読み込む
-                textBox1.AppendText(report + "\n\r");
-                temp_file.Write(report.Replace("\t", ","));
+                report = report.Replace("\r",""); // 改行コード\rを削除
+                report = report.Replace("\n", ""); // 改行コード\nを削除
+                textBox1.AppendText(iteration_number.ToString() +"\t" + report + "\r\n");
+                temp_file.WriteLine(iteration_number.ToString() + "," + report.Replace("\t", ","));
             }
             arduino_send("s");
             monitor_enable = false;
-            textBox1.AppendText("Monitor stop\n\r\n\r");
+            textBox1.AppendText("Monitor stop\r\n\r\n");
             return 0;
         }
 
@@ -279,7 +281,7 @@ namespace Arduino_PID_Thermal_Control
                 }
                 else
                 {
-                    textBox1.AppendText("COMポートが開かれていません\n\r\n\r");
+                    textBox1.AppendText("COMポートが開かれていません\r\n\r\n");
                 }
             }
 
@@ -343,13 +345,13 @@ namespace Arduino_PID_Thermal_Control
             if (serialPort1.IsOpen)
             {
                 arduino_send("r");
-                MessageBox.Show("Controller RESET\n\r\n\r");
+                MessageBox.Show("Controller RESET\r\n\r\n");
                 monitor_enable = false;
                 comclose();
             }
             else
             {
-                textBox1.AppendText("ポートは開かれていません\n\r\n\r");
+                textBox1.AppendText("ポートは開かれていません\r\n\r\n");
             }
         }
 
@@ -357,12 +359,12 @@ namespace Arduino_PID_Thermal_Control
         {
             if (monitor_enable == true)
             {
-                MessageBox.Show("Monitor中です。Monitorを中止してください\n\r\n\r");
+                MessageBox.Show("Monitor中です。Monitorを中止してください\r\n\r\n");
                 return;
             }
             if (serialPort1.IsOpen == false)
             {
-                textBox1.AppendText("COMポートが開かれていません\n\r\n\r");
+                textBox1.AppendText("COMポートが開かれていません\r\n\r\n");
                 return;
             }
             Form2.Instance.Form2_Text1 = label9.Text;
