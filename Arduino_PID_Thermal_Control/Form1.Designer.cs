@@ -57,6 +57,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -77,18 +79,19 @@
             this.textBox1.Location = new System.Drawing.Point(238, 36);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(372, 302);
+            this.textBox1.Size = new System.Drawing.Size(372, 333);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(14, 61);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 35);
             this.button1.TabIndex = 2;
             this.button1.Text = "Open";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
@@ -115,32 +118,35 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
             this.button4.Location = new System.Drawing.Point(121, 61);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(101, 35);
             this.button4.TabIndex = 5;
             this.button4.Text = "Close";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(131, 302);
+            this.button5.BackColor = System.Drawing.SystemColors.Control;
+            this.button5.Location = new System.Drawing.Point(131, 333);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(101, 36);
             this.button5.TabIndex = 6;
             this.button5.Text = "終了";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
+            this.button6.BackColor = System.Drawing.SystemColors.Control;
             this.button6.Location = new System.Drawing.Point(131, 249);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(101, 36);
             this.button6.TabIndex = 7;
             this.button6.Text = "RESET";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
@@ -150,7 +156,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 12);
             this.label1.TabIndex = 8;
-            this.label1.Text = "PID Thermal Controller Ver. 2.1";
+            this.label1.Text = "PID Thermal Controller Ver. 2.2";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -282,29 +288,55 @@
             // 
             // button7
             // 
+            this.button7.BackColor = System.Drawing.SystemColors.Control;
             this.button7.Location = new System.Drawing.Point(14, 249);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(101, 36);
             this.button7.TabIndex = 24;
             this.button7.Text = "パラメータ―設定";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(16, 302);
+            this.button8.BackColor = System.Drawing.SystemColors.Control;
+            this.button8.Location = new System.Drawing.Point(14, 333);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(99, 36);
+            this.button8.Size = new System.Drawing.Size(101, 36);
             this.button8.TabIndex = 25;
             this.button8.Text = "Save FILE";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.Control;
+            this.button9.Location = new System.Drawing.Point(14, 291);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(101, 36);
+            this.button9.TabIndex = 26;
+            this.button9.Text = "Terse Mode";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.Control;
+            this.button10.Location = new System.Drawing.Point(131, 291);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(101, 36);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "Clear Integral";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 356);
+            this.ClientSize = new System.Drawing.Size(639, 386);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label16);
@@ -331,8 +363,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
-            this.MaximumSize = new System.Drawing.Size(655, 395);
-            this.MinimumSize = new System.Drawing.Size(655, 395);
+            this.MaximumSize = new System.Drawing.Size(655, 425);
+            this.MinimumSize = new System.Drawing.Size(655, 425);
             this.Name = "Form1";
             this.Text = "Arduino PID Thermal Control";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -371,6 +403,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
 

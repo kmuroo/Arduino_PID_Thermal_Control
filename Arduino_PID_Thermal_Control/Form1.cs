@@ -10,6 +10,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
@@ -24,6 +25,7 @@ namespace Arduino_PID_Thermal_Control
         string default_portname = "COM7"; // デフォルトCOMポート
         string[] ports;
         bool monitor_enable = false;
+        bool verbose = false;// 詳細表示フラグ
         string[] current_parameters;
         string temp_file_name;
         StreamWriter temp_file;
@@ -51,6 +53,8 @@ namespace Arduino_PID_Thermal_Control
             button6.Enabled = false;
             button7.Enabled = false;
             button8.Enabled = false;
+            button9.Enabled = false;
+            button10.Enabled = false;
         }
 
         private void add_serial_portname()
@@ -95,6 +99,7 @@ namespace Arduino_PID_Thermal_Control
                     {
                         textBox1.AppendText("PID thermal controller を接続しました (" + serialPort1.PortName + ")\r\n\r\n");
                         current_parameters = get_current_parameters();
+                        verbose = false; // デフォルトでは詳細表示をオフにする
                         label9.Text = current_parameters[0];
                         label10.Text = current_parameters[1];
                         label11.Text = current_parameters[2];
@@ -206,6 +211,8 @@ namespace Arduino_PID_Thermal_Control
                     button4.BackColor = SystemColors.Control;
                     button6.Enabled = true;
                     button7.Enabled = true;
+                    button9.Enabled = true;
+                    button10.Enabled = true;
                     //button8.Enabled = true;
                 }
             }
@@ -225,6 +232,8 @@ namespace Arduino_PID_Thermal_Control
                     button3.BackColor = SystemColors.Control;
                     button7.Enabled = false;
                     button8.Enabled = false;
+                    button9.Enabled = false;
+                    button10.Enabled = false;
                     iteration_number = 0;
                    
                     if(File.Exists(temp_file_name))
@@ -258,8 +267,30 @@ namespace Arduino_PID_Thermal_Control
                 string report = serialPort1.ReadLine(); //Arduinoからのデータを読み込む
                 report = report.Replace("\r",""); // 改行コード\rを削除
                 report = report.Replace("\n", ""); // 改行コード\nを削除
-                textBox1.AppendText(iteration_number.ToString() +"\t" + report + "\r\n");
-                temp_file.WriteLine(iteration_number.ToString() + "," + report.Replace("\t", ","));
+                if (verbose)
+                {
+                    if (iteration_number % 3 == 1)
+                    {
+                        int i = iteration_number / 3 + 1;
+                        textBox1.AppendText(i.ToString() + "\t" + report + "\r\n");
+                        temp_file.Write(i.ToString() + "," + report.Replace("\t", ",") + ",");
+                    }
+                    else if(iteration_number % 3 == 2)
+                    {
+                        textBox1.AppendText(report + "\r\n");
+                        temp_file.Write(report.Replace("\t", ",") + ",");
+                    }
+                    else// if (iteration_number % 3 == 0)
+                    {
+                        textBox1.AppendText(report + "\r\n");
+                        temp_file.WriteLine(report.Replace("\t", ","));
+                    }
+                }
+                else
+                {
+                    textBox1.AppendText(iteration_number.ToString() + "\t" + report + "\r\n");
+                    temp_file.WriteLine(iteration_number.ToString() + "," + report.Replace("\t", ","));
+                }
             }
             arduino_send("s");
             monitor_enable = false;
@@ -274,6 +305,8 @@ namespace Arduino_PID_Thermal_Control
                 monitor_enable = false;
                 button8.Enabled = true;
                 button7.Enabled = true;
+                button9.Enabled = true;
+                button10.Enabled = true;
                 if (serialPort1.IsOpen)
                 {
                     button3.BackColor = Color.LightGray;
@@ -295,6 +328,10 @@ namespace Arduino_PID_Thermal_Control
                 {
                     comclose();
                     button7.Enabled = false;
+                    button9.Enabled = false;
+                    button10.Enabled = false;
+                    verbose = false; // 詳細表示をオフにする
+                    button9.BackColor = SystemColors.Control;
                     //button8.Enabled = false;
                 }
                 else
@@ -347,6 +384,9 @@ namespace Arduino_PID_Thermal_Control
                 arduino_send("r");
                 MessageBox.Show("Controller RESET\r\n\r\n");
                 monitor_enable = false;
+                button7.Enabled = false;
+                button9.Enabled = false;
+                button10.Enabled = false;
                 comclose();
             }
             else
@@ -458,6 +498,38 @@ namespace Arduino_PID_Thermal_Control
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                if (verbose == true)
+                {
+
+                    string t = arduino_send_recv("t");
+                    verbose = false;
+                    button9.BackColor = SystemColors.Control;
+                    button9.Text = "Terse Mode";
+                    textBox1.AppendText("簡易レポートモードに変更\r\n\r\n");
+                }
+                else
+                {
+                    string v = arduino_send_recv("v");
+                    verbose = true;
+                    button9.BackColor = Color.LightGray;
+                    button9.Text = "Verbose Mode";
+                    textBox1.AppendText("冗長レポートモードに変更\r\n\r\n");
+                }
+            }
+        }
+
+     
+        private void button10_Click(object sender, EventArgs e)
+        {
+            button10.BackColor = Color.LightGray;
+            string I = arduino_send_recv("i");
+            button10.BackColor = SystemColors.Control;
         }
     }
 }
