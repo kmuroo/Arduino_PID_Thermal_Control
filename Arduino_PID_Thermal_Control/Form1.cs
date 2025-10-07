@@ -477,7 +477,8 @@ namespace Arduino_PID_Thermal_Control
             DialogResult result = saveFileDialog1.ShowDialog();
 
             if (result == DialogResult.OK) {
-                // OKボタンがクリックされたときの処理if (saveFileDialog1.FileName != "")
+                // OKボタンがクリックされたときの処理
+                if (saveFileDialog1.FileName != "")
                 {
                     try
                     {
