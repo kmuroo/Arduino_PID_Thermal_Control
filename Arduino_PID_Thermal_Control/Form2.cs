@@ -45,7 +45,6 @@ namespace Arduino_PID_Thermal_Control
             label24.Text = textBox6.Text;
             label25.Text = textBox7.Text;
             label26.Text = textBox8.Text;
-
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
