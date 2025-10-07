@@ -474,28 +474,38 @@ namespace Arduino_PID_Thermal_Control
             saveFileDialog1.FileName = "data" + job.ToString() + ".csv";
             saveFileDialog1.Filter = "csv型式ファイル(*.csv)|*.csv";
             saveFileDialog1.Title = "Save an DATA File";
-            saveFileDialog1.ShowDialog();
+            DialogResult result = saveFileDialog1.ShowDialog();
 
-            if (saveFileDialog1.FileName != "")
-            {
-                try
+            if (result == DialogResult.OK) {
+                // OKボタンがクリックされたときの処理if (saveFileDialog1.FileName != "")
                 {
-                    // 一次ファイルをsaveFileDialog1.FileNameにコピー
-
-                    if (temp_file != null)
+                    try
                     {
-                        temp_file.Close();
-                        File.Copy(@temp_file_name, @saveFileDialog1.FileName,true);
-                        MessageBox.Show("データを保存しました: " + saveFileDialog1.FileName);
-                    // 一時ファイルを削除
-                        File.Delete(temp_file_name);
+                        // 一次ファイルをsaveFileDialog1.FileNameにコピー
+
+                        if (temp_file != null)
+                        {
+                            temp_file.Close();
+                            File.Copy(@temp_file_name, @saveFileDialog1.FileName, true);
+                            MessageBox.Show("データを保存しました: " + saveFileDialog1.FileName);
+                            // 一時ファイルを削除
+                            File.Delete(temp_file_name);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("データの保存に失敗しました: " + ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("データの保存に失敗しました: " + ex.Message);
-                }
+
             }
+            else
+            {
+                // キャンセルボタンがクリックされたときの処理
+                MessageBox.Show("保存がキャンセルされました。");
+                return;
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
