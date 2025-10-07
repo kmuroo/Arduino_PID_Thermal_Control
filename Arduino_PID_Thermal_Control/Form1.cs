@@ -93,7 +93,7 @@ namespace Arduino_PID_Thermal_Control
                     }
                     textBox1.AppendText("PID thermal controllerをオープンしています\r\n\r\n");
                                        
-                    serialPort1.ReadExisting(); //バッファを空に
+                    serialPort1.ReadExisting(); //バッファを空に（"Reset"を読み飛ばす）
 
                     if (devicecheck() == 0) //PID thermal controllerかどうかのチェック
                     {
@@ -134,7 +134,6 @@ namespace Arduino_PID_Thermal_Control
             {
                 textBox1.AppendText("device チェック開始\n\r\n\r");
                 string r = arduino_send_recv("r");
-                serialPort1.ReadExisting(); //バッファを空に
                 string a = "PID_Controller";
                 string c = arduino_send_recv("c");
                 c = c.TrimEnd('\r', '\n'); //改行コード削除
@@ -178,8 +177,7 @@ namespace Arduino_PID_Thermal_Control
         {
             string[] current_parameters;
             string parameters;
-            serialPort1.ReadExisting(); //バッファを空に
-            parameters = arduino_send_recv("l");
+            parameters = arduino_send_recv("l"); 
             current_parameters = parameters.Split(','); //カンマ区切りで分割
             return current_parameters;
         }
@@ -189,7 +187,7 @@ namespace Arduino_PID_Thermal_Control
             string recv_message;
             serialPort1.ReadExisting(); //バッファを空に
             serialPort1.Write(send_message); //メッセージ送信
-            serialPort1.ReadTimeout = 5000; //タイムアウトを5秒に設定
+            serialPort1.ReadTimeout = 10000; //タイムアウトを5秒に設定
             recv_message = serialPort1.ReadLine();//メッセージ受信
             return recv_message;
         }
@@ -225,11 +223,11 @@ namespace Arduino_PID_Thermal_Control
                 if (serialPort1.IsOpen)
                 {
                     job++;
-                    serialPort1.ReadExisting(); //バッファを空に
                     arduino_send("e");
                     textBox1.AppendText("Monitor start  Job. " + job + "\r\n");
                     button2.BackColor = Color.LightGray;
                     button3.BackColor = SystemColors.Control;
+                    button6.Enabled = false;
                     button7.Enabled = false;
                     button8.Enabled = false;
                     button9.Enabled = false;
@@ -304,6 +302,7 @@ namespace Arduino_PID_Thermal_Control
             {
                 monitor_enable = false;
                 button8.Enabled = true;
+                button6.Enabled = true;
                 button7.Enabled = true;
                 button9.Enabled = true;
                 button10.Enabled = true;
@@ -327,6 +326,7 @@ namespace Arduino_PID_Thermal_Control
                 if (monitor_enable == false)
                 {
                     comclose();
+                    button6.Enabled = false;
                     button7.Enabled = false;
                     button9.Enabled = false;
                     button10.Enabled = false;
@@ -381,12 +381,17 @@ namespace Arduino_PID_Thermal_Control
         {
             if (serialPort1.IsOpen)
             {
-                arduino_send("r");
-                MessageBox.Show("Controller RESET\r\n\r\n");
+                button6.BackColor = Color.LightGray;
+                string reset = arduino_send_recv("r");
+                textBox1.AppendText("PID thermal controllerがリセットされました\r\n");
+                button6.BackColor = SystemColors.Control;
                 monitor_enable = false;
+                button6.Enabled = false;
                 button7.Enabled = false;
                 button9.Enabled = false;
                 button10.Enabled = false;
+                button9.BackColor = SystemColors.Control;
+                button9.Text = "Terse Mode";
                 comclose();
             }
             else
@@ -427,7 +432,6 @@ namespace Arduino_PID_Thermal_Control
                 label14.Text = Form2.Instance.Form2_Text6;
                 label15.Text = Form2.Instance.Form2_Text7;
                 label16.Text = Form2.Instance.Form2_Text8;
-                serialPort1.ReadExisting();
 
                 string response = arduino_send_recv("p" + label9.Text + "," + label10.Text + "," + label11.Text
                     + "," + label12.Text + "," + label13.Text + "," + label14.Text + ","
@@ -443,8 +447,7 @@ namespace Arduino_PID_Thermal_Control
                     textBox1.AppendText("Failed to update parameters.\n\r\n\r");
                 }
 
-                serialPort1.ReadExisting();
-                current_parameters = get_current_parameters();
+                Thread.Sleep(1000); // Serial port のタイムアウト例外対策
                 textBox1.AppendText("New parameters are\n\r\n\r");
                 textBox1.AppendText(current_parameters[0] + "\t" + current_parameters[1] + "\t"
                     + current_parameters[2] + "\t" +current_parameters[3] + "\n\r\n\r" + current_parameters[4] + "\t"
@@ -530,6 +533,7 @@ namespace Arduino_PID_Thermal_Control
             button10.BackColor = Color.LightGray;
             string I = arduino_send_recv("i");
             button10.BackColor = SystemColors.Control;
+            textBox1.AppendText("積分値Iが0クリアされました\r\n\r\n");
         }
     }
 }
