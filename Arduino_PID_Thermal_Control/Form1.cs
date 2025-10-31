@@ -448,6 +448,7 @@ namespace Arduino_PID_Thermal_Control
                 }
 
                 Thread.Sleep(1000); // Serial port のタイムアウト例外対策
+                current_parameters = get_current_parameters();
                 textBox1.AppendText("New parameters are\n\r\n\r");
                 textBox1.AppendText(current_parameters[0] + "\t" + current_parameters[1] + "\t"
                     + current_parameters[2] + "\t" +current_parameters[3] + "\n\r\n\r" + current_parameters[4] + "\t"
